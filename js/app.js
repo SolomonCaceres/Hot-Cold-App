@@ -5,20 +5,14 @@ var counter = 0;
 
 
 
-
-
 function counterfunc(){
 
 	if ($("#userGuess").val('')){
 		counter++;
-	
+	}
  $("#totalGuess").val(counter);
-}
+
 };
-
-
-
-
 
 
 
@@ -26,9 +20,15 @@ function counterfunc(){
 function counterreset(){
 
 	var counter = 0;
+	$("#totalGuess").val(counter);
 };
 
 
+
+
+while ($("#userGuess").val('')){
+	count++;
+};
 
 
 
@@ -183,27 +183,19 @@ $("#guessButton").click(function(){
 	var answer= $("#userGuess").val('');
 	var num = Number(answer);
 
-	
-if(!answer){
-	alert("type your number in the box");
-}
-
 
 });
-
-
 
 
 
 
 $("#guessButton").click(function(){
 	counterfunc();
+	
+
 
 
 });
-
-
-
 
 
 
@@ -215,7 +207,7 @@ $(".new") .click(function(){
 rannum();
 clearText();
 playhotcoldmusic();
-counterreset();
+
 
 
 });
