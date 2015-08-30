@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
 var counter = 0;
-
+var timer = null;
 
 
 function counterfunc(){
@@ -17,22 +17,21 @@ function counterfunc(){
 
 
 
-function counterreset(){
+/*function counterreset(){
 
 	var counter = 0;
 	$("#totalGuess").val(counter);
 };
+*/
 
 
 
 
-while ($("#userGuess").val('')){
-	count++;
-};
-
-
-
-
+function reset(){
+	
+clearInterval(timer);
+    counter=0;
+}
 
 
 
@@ -207,7 +206,7 @@ $(".new") .click(function(){
 rannum();
 clearText();
 playhotcoldmusic();
-
+reset();
 
 
 });
