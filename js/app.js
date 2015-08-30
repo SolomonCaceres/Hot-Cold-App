@@ -1,12 +1,86 @@
 
 $(document).ready(function(){
 
+var counter = 0;
+
+
+
+
+
+function counterfunc(){
+
+	if ($("#userGuess").val('')){
+		counter++;
+	
+ $("#totalGuess").val(counter);
+}
+};
+
+
+
+
+
+
+
+
+function counterreset(){
+
+	var counter = 0;
+};
+
+
+
+
+
+
+
+
+
+/*This hides userGuess2 which contains the randomnumber*/
+$("#userGuess2").hide();
+
+
+
+/* this plays the main song*/
+function playhotcoldmusic () {
+  $('#hotcoldmusic')[0].volume = 0.5;
+  $('#hotcoldmusic')[0].load();
+  $('#hotcoldmusic')[0].play();
+};
+
+
+
+/*This stops the main song once you win*/
+function stophotcoldmusic () {
+  $('#hotcoldmusic')[0].pause();
+  
+};
+
+
+/*This is the win music */
+function playhotcoldcorrect () {
+  $('#hotcoldcorrect')[0].volume = 0.5;
+  $('#hotcoldcorrect')[0].load();
+  $('#hotcoldcorrect')[0].play();
+};
+
+
+/*if you win music function*/
+function winmusic(){
+var correctresponse = "Correct- You Win!!!";
+	 if ($('#userAnswerArea').val(correctresponse)){
+		stophotcoldmusic ();
+		playhotcoldcorrect();
+	}
+};
+
+
 
 
 /*displays a reponse in an alert box*/
 function response(){
 
-	var randomnumber = Math.floor(Math.random() * 100);	
+	var randomnumber = (Math.floor(Math.random() * 100));	
 	var a = parseInt($("#userGuess").val());
 	var b = parseInt($("#userGuess2").val());
 	var firstresponse = "Hot";
@@ -18,53 +92,71 @@ function response(){
 	var y = 20;
 	var z = 30;
 	var zz= 40;
+	var xx= 50;
+	var yy= 60;
+	var ww= 70;
+	var vv= 80;
+	var qq= 90;
+	var uu= 100;
 	
 
 
 /* This is the response logic*/
-
-	
 	if (a==b){
-		$("#test").val(correctresponse);
+		$("#userAnswerArea").val(correctresponse);
+		winmusic();
 	}
 
 	else if (a>b-x && a<b+x){
-		$("#test").val(firstresponse);
+		$("#userAnswerArea").val(firstresponse);
 	}
 
  	else if (a>b-y && a<b+y){	
-		$("#test").val(secondresponse);
+		$("#userAnswerArea").val(secondresponse);
 	}
 
 	else if (a>b-z && a<b+z){			
-		$("#test").val(thirdresponse);
+		$("#userAnswerArea").val(thirdresponse);
 	}
 
 	else if (a>b-zz && a<b+zz){		
-		$("#test").val(fourthresponse);	
+		$("#userAnswerArea").val(fourthresponse);	
+	}
+	else if (a>b-xx && a<b+xx){		
+		$("#userAnswerArea").val("ICE");	
+	}
+	else if (a>b-yy && a<b+yy){		
+		$("#userAnswerArea").val("ICE");	
+	}
+	else if (a>b-ww && a<b+ww){		
+		$("#userAnswerArea").val("ICE");	
+	}
+	else if (a>b-vv && a<b+vv){		
+		$("#userAnswerArea").val("ICE");	
 	}
 
-	
+	else if (a>b-qq && a<b+qq){		
+		$("#userAnswerArea").val("ICE");	
+	}
+	else if (a>b-uu && a<b+uu){		
+		$("#userAnswerArea").val("ICE");	
+	}
 
 };
 
 
 
 
-
-
-
-
-
-
-
-/*Random number function-----places this random number in a userGuess2 box*/
+/* Generates the random number onceyou click onn the new game button*/
 function rannum(){
 	var randomnumber = Math.floor(Math.random() * 100);
-		/*return (randomnumber);*/
+		//return (randomnumber);
 		$("#userGuess2").val(randomnumber);
 
 };
+
+
+
 
 
 
@@ -72,7 +164,8 @@ function rannum(){
 function clearText(){
 	 $("#userGuess").val("");
 	 $("#guessList").val("");
-	 $("#test").val("");
+	 $("#userAnswerArea").val("");
+	 $("#totalGuess").val("");
 	
 };
 
@@ -85,28 +178,44 @@ function clearText(){
 
 /*Guess Button Function*/
 $("#guessButton").click(function(){
-
+	
 	response();
 	var answer= $("#userGuess").val('');
 	var num = Number(answer);
+
 	
-
-
 if(!answer){
 	alert("type your number in the box");
 }
-
 
 
 });
 
 
 
-/*New Game function--- It also generates a random number and clears all text boxes*/
 
+
+
+$("#guessButton").click(function(){
+	counterfunc();
+
+
+});
+
+
+
+
+
+
+
+
+
+/*New Game function--- It also generates a random number and clears all text boxes*/
 $(".new") .click(function(){
 rannum();
 clearText();
+playhotcoldmusic();
+counterreset();
 
 
 });
